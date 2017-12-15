@@ -23,6 +23,7 @@ gem 'pg'
 gem 'pundit'
 gem 'slim-rails'
 gem 'therubyracer', :platform=>:ruby
+gem 'pickadate-rails'
 group :development do
   gem 'better_errors'
   gem 'capistrano', '~> 3.0.1'

@@ -14,4 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require moment-with-locales.min
+//= require pickadate/picker
+//= require pickadate/picker.date
+//= require pickadate/picker.time
+//= require pickadate/translations/uk_UA
 //= require_tree .
