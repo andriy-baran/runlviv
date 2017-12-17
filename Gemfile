@@ -22,17 +22,17 @@ gem 'high_voltage'
 gem 'pg'
 gem 'pundit'
 gem 'slim-rails'
-gem 'therubyracer', :platform=>:ruby
+gem 'therubyracer', :platform => :ruby
 gem 'pickadate-rails'
 group :development do
   gem 'better_errors'
-  gem 'capistrano', '~> 3.0.1'
+  gem 'capistrano', '~> 3.10'
   gem 'capistrano-bundler'
   gem 'capistrano-rails', '~> 1.1.0'
   gem 'capistrano-rails-console'
   gem 'capistrano-rvm', '~> 0.1.1'
   gem 'foreman'
-  gem 'hub', :require=>nil
+  gem 'hub', :require => nil
   gem 'rails_layout'
   gem 'spring-commands-rspec'
 end
