@@ -30,7 +30,7 @@ RUN bundle install --jobs 20 --retry 5 --without development test
 
 # Adding project files
 COPY . ./
-RUN bundle exec rake DATABASE_URL=postgres:does_not_exist assets:precompile
+RUN bundle exec rake assets:precompile
 
 EXPOSE $PORT
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

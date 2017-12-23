@@ -52,7 +52,7 @@ test:
 
 production:
   adapter:  postgresql
-  host:     localhost
+  host:     postgres
   encoding: unicode
   database: runlviv_production
   pool:     5
