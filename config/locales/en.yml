@@ -21,3 +21,14 @@
 
 en:
   hello: "Hello world"
+  domain:
+    run: Run
+    place: Place
+    time: Time
+    start_date: Pick a date
+    start_time: Pick a time
+    distance: Distance
+    tempo:
+      low: Low tempo
+      medium: Medium tempo
+      hight: Hight tempo

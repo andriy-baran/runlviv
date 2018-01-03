@@ -4,6 +4,7 @@ class CreateRuns < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.string :place
       t.string :distance
+      t.string :tempo
       t.datetime :beginning
 
       t.timestamps null: false
