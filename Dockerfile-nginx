@@ -1,8 +1,21 @@
 FROM nginx
+
 MAINTAINER Andrii Baran
+
 RUN apt-get update -qq && apt-get -y install apache2-utils
-ENV RAILS_ROOT /home/otaman/runlviv
+
+ENV RAILS_ROOT /runlviv
+
 WORKDIR $RAILS_ROOT
+
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
+
+RUN mkdir log
+
+RUN touch log/nginx.access.log && touch nginx.error.log
+
+COPY public public/
+
 EXPOSE 80
+
 CMD [ "nginx", "-g", "daemon off;" ]

@@ -32,5 +32,9 @@ RUN bundle install --jobs 20 --retry 5 --without development test
 COPY . ./
 RUN bundle exec rake assets:precompile
 
+RUN mkdir pids/
+
+RUN touch pids/puma.pid
+
 EXPOSE $PORT
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

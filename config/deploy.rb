@@ -6,15 +6,16 @@ set :repo_url, 'git@github.com:andriy-baran/runlviv.git'
 set :deploy_to, '/home/otaman/runlviv'
 # set :scm, :git
 
-# set :format, :pretty
-# set :log_level, :debug
-# set :pty, true
+set :format, :pretty
+set :log_level, :debug
+set :pty, true
 
 # set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public}
+set :linked_dirs, %w{postgres-data}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :keep_releases, 5
+set :keep_releases, 5
 
 namespace :deploy do
   desc 'Restart application'

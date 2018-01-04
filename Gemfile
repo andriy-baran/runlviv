@@ -7,12 +7,14 @@ gem 'coffee-rails', '~> 4.2.2'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'puma', group: :production
 group :development, :test do
   gem 'byebug'
 end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'thin'
 end
 gem 'administrate'
 gem 'bootstrap', '~> 4.0.0.alpha6'
