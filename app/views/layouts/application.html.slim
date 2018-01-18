@@ -12,6 +12,27 @@ html
     == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
     == csrf_meta_tags
   body
+    #fb-root
+      javascript:
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '951512148331077',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.11'
+          });
+
+          FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/uk_UA/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
     .site-wrapper
       .site-wrapper-inner
         .cover-container
@@ -32,23 +53,4 @@ html
                 a href="https://getbootstrap.com/"  Bootstrap
                 |  by
                 a href="https://twitter.com/mdo"  @mdo
-    javascript:
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '951512148331077',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v2.11'
-        });
-
-        FB.AppEvents.logPageView();
-      };
-
-      (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
 
