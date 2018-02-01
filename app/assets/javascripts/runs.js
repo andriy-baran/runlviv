@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$(document).on('page:load, turbolinks:load', function() {
   $('.date-input').pickadate({hiddenName: true});
   $('.time-input').pickatime({
     format: 'HH:i',
@@ -7,7 +7,9 @@ $(document).on('ready', function() {
     hiddenName: true
   });
 
-  var datePicker = $('.date-input').pickadate('picker');
-  datePicker.set('min', new Date)
-  datePicker.set('view', $('.date-input').val())
+  if ( $('.date-input').length > 0) {
+    var datePicker = $('.date-input').pickadate('picker');
+    datePicker.set('min', new Date)
+    datePicker.set('view', $('.date-input').val())
+  }
 });

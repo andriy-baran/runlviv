@@ -22,15 +22,29 @@
 en:
   hello: "Hello world"
   domain:
-    run: Run
+    runs:
+      run: Run
+      place: Place
+      time: Time
+      start_date: Pick a date
+      start_time: Pick a time
+      distance: Distance
+      tempo:
+        low: Low tempo
+        medium: Medium tempo
+        hight: Hight tempo
+      created: Run was successfully created.
   main_page:
+    privacy: Privacy Policy
+    terms: Terms of Service
+    contact: Contact
     fb_login:  Sign in with Facebook
+    profile: Profile
+  profile:
+    new_run: Create new run
+  runs:
     place: Place
     time: Time
-    start_date: Pick a date
-    start_time: Pick a time
     distance: Distance
-    tempo:
-      low: Low tempo
-      medium: Medium tempo
-      hight: Hight tempo
+    tempo: Tempo
+    creator: Creator

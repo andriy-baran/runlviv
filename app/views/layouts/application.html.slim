@@ -3,11 +3,12 @@ html
   head
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     title
-      = content_for?(:title) ? yield(:title) : 'Rails Bootstrap'
-    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Rails Bootstrap'}"
+      = content_for?(:title) ? yield(:title) : 'Run Lviv'
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Run Lviv'}"
     == stylesheet_link_tag "https://getbootstrap.com/docs/4.0/examples/cover/cover.css"
     == stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => 'reload'
+    /! Global site tag (gtag.js) - Google Analytics
     == javascript_include_tag 'https://unpkg.com/popper.js@1.12.9/dist/umd/popper.js', 'data-turbolinks-track' => 'reload'
     == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
     == csrf_meta_tags
@@ -35,22 +36,29 @@ html
 
     .site-wrapper
       .site-wrapper-inner
+        header.masthead.clearfix.col-lg-6.offset-lg-3
+          .inner
+            h3.masthead-brand Run Lviv
+            nav.nav.nav-masthead
+              / a.nav-link.active href="#"
+              /   = I18n.t('main_page.privacy')
+              / a.nav-link href="#"
+              /   = I18n.t('main_page.terms')
+              a.nav-link href="#"
+                = I18n.t('main_page.contact')
+              - if user_signed_in?
+                = link_to I18n.t('main_page.profile'), profile_path, class: 'nav-link'
         .cover-container
-          header.masthead.clearfix
-            .inner
-              h3.masthead-brand Cover
-              nav.nav.nav-masthead
-                a.nav-link.active href="#"  Home
-                a.nav-link href="#"  Features
-                a.nav-link href="#"  Contact
           main.inner.cover role="main"
             == render 'layouts/messages'
             == yield
-          footer.mastfoot
-            .inner
-              p
-                | Cover template for
-                a href="https://getbootstrap.com/"  Bootstrap
-                |  by
-                a href="https://twitter.com/mdo"  @mdo
+        footer.mastfoot.col-lg-6.offset-lg-3
+          .inner
+            p
+              | Made for
+              a href="https://www.facebook.com/runlviv/"  RunLviv
+              |  by
+              a href="http://www.otaman.co"  otaman.co
+            p
+              = "Lviv #{Date.today.year}"
 

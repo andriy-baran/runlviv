@@ -1,7 +1,7 @@
 module RunsHelper
   def tempo_options
-    [I18n.t('domain.tempo.low'),
-    I18n.t('domain.tempo.medium'),
-    I18n.t('domain.tempo.hight')]
+    [I18n.t('domain.runs.tempo.low'),
+    I18n.t('domain.runs.tempo.medium'),
+    I18n.t('domain.runs.tempo.hight')]
   end
 end

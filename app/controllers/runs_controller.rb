@@ -24,11 +24,12 @@ class RunsController < ApplicationController
   # POST /runs
   # POST /runs.json
   def create
-    @run = Run.new(run_params)
+    params_obj = ::RunParams.new(run_params)
+    @run = current_user.runs.new(params_obj.model_attrs)
 
     respond_to do |format|
       if @run.save
-        format.html { redirect_to @run, notice: 'Run was successfully created.' }
+        format.html { redirect_to @run, notice: I18n.t('domain.runs.created') }
         format.json { render :show, status: :created, location: @run }
       else
         format.html { render :new }
