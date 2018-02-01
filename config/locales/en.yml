@@ -23,6 +23,8 @@ en:
   hello: "Hello world"
   domain:
     run: Run
+  main_page:
+    fb_login:  Sign in with Facebook
     place: Place
     time: Time
     start_date: Pick a date

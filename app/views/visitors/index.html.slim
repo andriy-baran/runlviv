@@ -1,5 +1,6 @@
 h1.cover-heading Cover your page.
 p.lead Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.
-p.lead
-  .fb-login-button data-auto-logout-link="false" data-button-type="continue_with" data-max-rows="1" data-show-faces="false" data-size="large" data-use-continue-as="false"
-
+- unless user_signed_in?
+    p.lead
+       = link_to user_facebook_omniauth_authorize_path, class: 'btn btn-primary btn-lg' do
+        = I18n.t('main_page.fb_login')

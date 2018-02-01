@@ -8,23 +8,24 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'puma', group: :production
-group :development, :test do
-  gem 'byebug'
-end
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'thin'
 end
+
 gem 'administrate'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'bourbon'
 gem 'devise'
 gem 'high_voltage'
-gem 'pg'
+gem 'pg', '~> 0.21'
 gem 'pundit'
 gem 'slim-rails'
 gem 'pickadate-rails'
+gem 'omniauth-facebook'
+
 group :development do
   gem 'therubyracer', :platform => :ruby
   gem 'better_errors'
@@ -38,6 +39,7 @@ group :development do
   gem 'rails_layout'
   gem 'spring-commands-rspec'
 end
+
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
@@ -46,6 +48,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop'
 end
+
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
