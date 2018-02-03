@@ -25,13 +25,12 @@ gem 'pundit'
 gem 'slim-rails'
 gem 'pickadate-rails'
 gem 'omniauth-facebook'
-
 group :development do
   gem 'therubyracer', :platform => :ruby
   gem 'better_errors'
   gem 'capistrano', '~> 3.10'
   gem 'capistrano-bundler'
-  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rails', '~> 1.3'
   gem 'capistrano-rails-console'
   gem 'capistrano-rvm', '~> 0.1.1'
   gem 'foreman'

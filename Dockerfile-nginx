@@ -16,6 +16,8 @@ RUN touch log/nginx.access.log && touch nginx.error.log
 
 COPY public public/
 
+COPY app/assets/images public/assets
+
 EXPOSE 80
 
 CMD [ "nginx", "-g", "daemon off;" ]
