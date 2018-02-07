@@ -4,7 +4,12 @@ class RunsController < ApplicationController
   # GET /runs
   # GET /runs.json
   def index
-    @runs = Run.all
+    @runs = Run.all.order(:beginning)
+    @runs_by_date = @runs.group_by{ |run| run.beginning.to_date }
+  end
+
+  def my_runs
+    @runs = current_user.runs.order('beginning DESC')
   end
 
   # GET /runs/1
@@ -42,8 +47,9 @@ class RunsController < ApplicationController
   # PATCH/PUT /runs/1.json
   def update
     respond_to do |format|
-      if @run.update(run_params)
-        format.html { redirect_to @run, notice: 'Run was successfully updated.' }
+      params_obj = ::RunParams.new(run_params)
+      if @run.update(params_obj.model_attrs)
+        format.html { redirect_to @run, notice: I18n.t('domain.runs.updated') }
         format.json { render :show, status: :ok, location: @run }
       else
         format.html { render :edit }

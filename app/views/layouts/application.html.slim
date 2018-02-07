@@ -5,7 +5,7 @@ html
     title
       = content_for?(:title) ? yield(:title) : 'Run Lviv'
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Run Lviv'}"
-    == stylesheet_link_tag "https://getbootstrap.com/docs/4.0/examples/cover/cover.css"
+    / == stylesheet_link_tag "https://getbootstrap.com/docs/4.0/examples/cover/cover.css"
     == stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     == stylesheet_link_tag "application", :media => 'all', 'data-turbolinks-track' => 'reload'
     /! Global site tag (gtag.js) - Google Analytics
@@ -34,31 +34,30 @@ html
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-    .site-wrapper
-      .site-wrapper-inner
-        header.masthead.clearfix.col-lg-6.offset-lg-3
-          .inner
-            h3.masthead-brand Run Lviv
-            nav.nav.nav-masthead
-              / a.nav-link.active href="#"
-              /   = I18n.t('main_page.privacy')
-              / a.nav-link href="#"
-              /   = I18n.t('main_page.terms')
-              a.nav-link href="#"
-                = I18n.t('main_page.contact')
-              - if user_signed_in?
-                = link_to I18n.t('main_page.profile'), profile_path, class: 'nav-link'
-        .cover-container
-          main.inner.cover role="main"
-            == render 'layouts/messages'
-            == yield
-        footer.mastfoot.col-lg-6.offset-lg-3
-          .inner
-            p
-              | Made for
-              a href="https://www.facebook.com/runlviv/"  RunLviv
-              |  by
-              a href="http://www.otaman.co"  otaman.co
-            p
-              = "Lviv #{Date.today.year}"
+    .background
+    .content.d-flex.flex-column
+      header.masthead
+        .inner.col-lg-6.offset-lg-3.col-md-6.offset-md-3.col-sm-6.offset-sm-3
+          h3.masthead-brand Run Lviv
+          nav.nav.nav-masthead
+            / a.nav-link.active href="#"
+            /   = I18n.t('main_page.privacy')
+            = link_to I18n.t('main_page.runs'), runs_path, class: 'nav-link'
+            a.nav-link href="#"
+              = I18n.t('main_page.contact')
+            - if user_signed_in?
+              = link_to I18n.t('main_page.profile'), profile_user_path(current_user), class: 'nav-link'
+      .cover-container.align-self-center.d-flex.align-items-center
+        main.inner.cover role="main"
+          == render 'layouts/messages'
+          == yield
+      footer.mastfoot
+        .inner.col-xs-6.offset-xs-3
+          p
+            | Made for
+            a href="https://www.facebook.com/runlviv/"  RunLviv
+            |  by
+            a href="http://www.otaman.co"  otaman.co
+          p
+            = "Lviv #{Date.today.year}"
 

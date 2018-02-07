@@ -29,22 +29,27 @@ en:
       start_date: Pick a date
       start_time: Pick a time
       distance: Distance
+      tempo_plh: Tempo
       tempo:
         low: Low tempo
         medium: Medium tempo
         hight: Hight tempo
       created: Run was successfully created.
+      updated: Run was successfully updated.
   main_page:
     privacy: Privacy Policy
     terms: Terms of Service
     contact: Contact
     fb_login:  Sign in with Facebook
     profile: Profile
+    runs: Runs
   profile:
     new_run: Create new run
+    my_runs: My runs
   runs:
     place: Place
     time: Time
     distance: Distance
     tempo: Tempo
     creator: Creator
+    explain: "is planing to run at %{time} from %{place}"

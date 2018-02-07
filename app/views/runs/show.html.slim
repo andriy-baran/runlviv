@@ -1,27 +1,31 @@
-.card-header
-  = "Creator: #{@run.user.name}"
-.card-body
-  .row.align-items-start
-    .col
-      .d-block.my-5
-        i.fa.fa-map-marker.fa-3x.rounded-circle
-        p.h3
-          = @run.place
-      .d-block.my-5
-        i.fa.fa-road.fa-3x
-        p.h3
-          = @run.distance
-    .col
-      .d-block.my-5
-        i.fa.fa-clock-o.fa-3x
-        p.h3
-          = @run.beginning.strftime('%d/%m/%Y %H:%M')
-      .d-block.my-5
-        i.fa.fa-heartbeat.fa-3x
-        p.h3
-          = @run.tempo
-.card-footer
-    => link_to 'Edit', edit_run_path(@run)
-    '|
-    =< link_to 'Back', runs_path
+.card.bg-semi-black
+  .card-header
+    = "#{I18n.t('runs.creator')}: #{@run.user.name}"
+  .card-body
+    .row.align-items-start
+      .col
+        .d-block.my-5
+          i.fa.fa-map-marker.fa-3x.rounded-circle
+          p.h3
+            = @run.place
+      .col
+        .d-block.my-5
+          i.fa.fa-clock-o.fa-3x
+          p.h3
+            = format_time(@run.beginning)
+    .row.align-items-start
+      .col
+        .d-block.my-5
+          i.fa.fa-road.fa-3x
+          p.h3
+            = @run.distance || 'N/A'
+      .col
+        .d-block.my-5
+          i.fa.fa-heartbeat.fa-3x
+          p.h3
+            = @run.tempo || 'N/A'
+  .card-footer
+      => link_to 'Edit', edit_run_path(@run)
+      '|
+      =< link_to 'Back', runs_path
 

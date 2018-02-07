@@ -1,0 +1,13 @@
+table.table.table-responsive.table-hover.table-striped.bg-semi-black
+  tbody
+    - @runs.each do |run|
+      tr
+        td.p-5
+          = link_to run do
+            .h1
+              i.fa.fa-calendar
+              | &nbsp
+              / = link_to run do
+              = run.beginning.strftime('%H:%M')
+              | &nbsp
+              = run.beginning.strftime('%d/%m')

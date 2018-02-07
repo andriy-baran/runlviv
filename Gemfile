@@ -25,6 +25,7 @@ gem 'pundit'
 gem 'slim-rails'
 gem 'pickadate-rails'
 gem 'omniauth-facebook'
+gem 'rails-i18n', '~> 5.1'
 group :development do
   gem 'therubyracer', :platform => :ruby
   gem 'better_errors'

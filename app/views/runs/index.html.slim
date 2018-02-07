@@ -1,19 +1,21 @@
-h1 Listing runs
-
-table
-  thead
-    tr
-      th
-      th
-      th
-
-  tbody
-    - @runs.each do |run|
-      tr
-        td = link_to 'Show', run
-        td = link_to 'Edit', edit_run_path(run)
-        td = link_to 'Destroy', run, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Run', new_run_path
+- @runs_by_date.each do |date, runs|
+  .h2.mt-3
+    = I18n.l(date, format: '%A, %e %B')
+  .list-group style="background:transparent"
+    - runs.each do |run|
+      = link_to run_path(run) do
+        .list-group-item.row.p-0.bg-semi-black
+          .row
+            .h2.d-block.d-sm-none.position-absolute
+              span.badge.badge-secondary
+                = run.beginning.strftime('%H:%M')
+            .col-sm-3.col-4.m-auto.d-none.d-sm-block
+              .h1.d-none.d-sm-block
+                span.badge.badge-secondary
+                  = run.beginning.strftime('%H:%M')
+            .col-sm-6.col-8.m-auto.text-right.text-sm-left.pl-3-sm.p-0
+              .h4
+                = run.user.name
+              = I18n.t('runs.explain', time: '', place: run.place)
+            .col-sm-3.col-4
+              = image_tag "#{current_user.image}?type=large", class: 'rounded float-sm-right', size: '100x100'

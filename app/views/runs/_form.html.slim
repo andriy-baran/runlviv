@@ -11,5 +11,5 @@
     .form-group.col-sm-6
       = f.text_field :distance, placeholder: t('domain.runs.distance'), class: 'form-control form-control-lg'
     .form-group.col-sm-6
-      = f.select :tempo, options_for_select(tempo_options, f.object.tempo), { include_blank: true, prompt: 'Tempo' }, class: 'form-control form-control-lg'
+      = f.select :tempo, options_for_select(tempo_options, f.object.tempo), { include_blank: true, prompt: I18n.t('domain.runs.tempo_plh') }, class: 'form-control form-control-lg'
   .actions = f.submit class: 'btn btn-success btn-lg'

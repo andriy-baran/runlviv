@@ -29,15 +29,33 @@ a:hover {
  */
 html,
 body {
-  height: 100%;
+  /*height: 100%;*/
 }
 
 body {
   background: url(cover.jpg) no-repeat center center fixed;
   background-size: cover;
+  background-attachment: fixed;
   color: #fff;
   text-align: center;
   font-family: 'Quicksand', sans-serif;
+
+}
+
+.background {
+  background: url(cover.jpg) no-repeat center center fixed;
+  /*
+  background-size: cover OR 100% (height will be set automatically) OR 100% 100% (strech image)
+  Safari might have problems with "background-size: cover" and "background-attachment: fixed". Fix: set "background-size" to "100%" or "100% 100%"
+  */
+  background-size: cover;
+  background-attachment: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -54,11 +72,6 @@ body {
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
-}
-
-.cover-container {
-  margin-right: auto;
-  margin-left: auto;
 }
 
 /* Padding for spacing */
@@ -162,32 +175,44 @@ body {
  * Affix and center
  */
 @media (min-width: 768px) {
-  /* Pull out the header and footer */
+  .cover-container {
+    margin-right: auto;
+    margin-left: auto;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+  }
+
   .masthead {
     position: fixed;
     top: 0;
+    width: 100%;
   }
   .mastfoot {
     position: fixed;
     bottom: 0;
-  }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
-  .cover-container {
     width: 100%;
-    /* Must be percentage or pixels for horizontal alignment */
   }
 }
 
-@media (min-width: 992px) {
-  .masthead,
-  .mastfoot,
+@media (max-width: 767px) {
   .cover-container {
-    /*width: 50%;*/
+    margin-right: auto;
+    margin-left: auto;
+    position: inherit;
+    top: 50%;
+    bottom: 50%;
+  }
+
+  .masthead {
+    position: inherit;
+    top: 0;
+    width: 100%;
+  }
+  .mastfoot {
+    position: inherit;
+    bottom: 0;
+    width: 100%;
   }
 }
+
