@@ -18,4 +18,4 @@
                 = run.user.name
               = I18n.t('runs.explain', time: '', place: run.place)
             .col-sm-3.col-4
-              = image_tag "#{current_user.image}?type=large", class: 'rounded float-sm-right', size: '100x100'
+              = image_tag "#{run.user.image}?type=large", class: 'rounded float-sm-right', size: '100x100'
