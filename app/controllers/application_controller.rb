@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    profile_path
+    profile_user_path(resource)
   end
 end
