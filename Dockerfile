@@ -1,5 +1,5 @@
 # From one of the official ruby images
-FROM ruby:2.4.1-alpine
+FROM ruby:2.5.0-alpine
 
 # Available (and reused) args
 # Use --build-arg APP_PATH=/usr/app to use another app directory
