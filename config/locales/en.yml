@@ -21,6 +21,8 @@
 
 en:
   hello: "Hello world"
+  app:
+    unauthorized: You are not authorized to perform this action.
   domain:
     runs:
       run: Run
@@ -53,3 +55,5 @@ en:
     tempo: Tempo
     creator: Creator
     explain: "is planing to run at %{time} from %{place}"
+    new: Create new run
+    edit: Editing run

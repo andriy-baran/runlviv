@@ -1,5 +1,6 @@
 class RunsController < ApplicationController
   before_action :set_run, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:my_runs, :new, :edit, :create, :update, :destroy]
 
   # GET /runs
   # GET /runs.json
@@ -24,6 +25,7 @@ class RunsController < ApplicationController
 
   # GET /runs/1/edit
   def edit
+    authorize @run
   end
 
   # POST /runs
@@ -31,7 +33,7 @@ class RunsController < ApplicationController
   def create
     params_obj = ::RunParams.new(run_params)
     @run = current_user.runs.new(params_obj.model_attrs)
-
+    authorize @run
     respond_to do |format|
       if @run.save
         format.html { redirect_to @run, notice: I18n.t('domain.runs.created') }
@@ -48,6 +50,7 @@ class RunsController < ApplicationController
   def update
     respond_to do |format|
       params_obj = ::RunParams.new(run_params)
+      authorize @run
       if @run.update(params_obj.model_attrs)
         format.html { redirect_to @run, notice: I18n.t('domain.runs.updated') }
         format.json { render :show, status: :ok, location: @run }
@@ -61,6 +64,7 @@ class RunsController < ApplicationController
   # DELETE /runs/1
   # DELETE /runs/1.json
   def destroy
+    authorize @run
     @run.destroy
     respond_to do |format|
       format.html { redirect_to runs_url, notice: 'Run was successfully destroyed.' }

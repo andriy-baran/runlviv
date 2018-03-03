@@ -38,7 +38,8 @@ html
     .content.d-flex.flex-column
       header.masthead
         .inner.col-lg-6.offset-lg-3.col-md-6.offset-md-3.col-sm-6.offset-sm-3
-          h3.masthead-brand Run Lviv
+          h3.masthead-brand
+            = link_to 'Run Lviv', root_path
           nav.nav.nav-masthead
             / a.nav-link.active href="#"
             /   = I18n.t('main_page.privacy')

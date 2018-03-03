@@ -27,6 +27,8 @@ uk:
     #   r:
     #     login: "Handle"
   hello: "Hello world"
+  app:
+    unauthorized: У Вас немає прав на цю дію
   domain:
     runs:
       run: Забіг
@@ -59,3 +61,5 @@ uk:
     tempo: Темп
     creator: Організатор
     explain: "планує починати %{time} з %{place}"
+    new: Сторення нового забігу
+    edit: Редагування забігу

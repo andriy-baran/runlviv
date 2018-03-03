@@ -1,6 +1,6 @@
 .card.bg-semi-black
   .card-header
-    = "#{I18n.t('runs.creator')}: #{@run.user.name}"
+    = link_to("#{I18n.t('runs.creator')}: #{@run.user.name}", profile_user_path(@run.user))
   .card-body
     .row.align-items-start
       .col
@@ -25,7 +25,6 @@
           p.h3
             = @run.tempo || 'N/A'
   .card-footer
-      => link_to 'Edit', edit_run_path(@run)
-      '|
-      =< link_to 'Back', runs_path
+    - if policy(@run).update?
+      = link_to I18n.t('runs.edit'), edit_run_path(@run), class: 'btn btn-sm btn-warning btn-block'
 
