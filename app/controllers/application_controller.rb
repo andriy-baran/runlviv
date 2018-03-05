@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def authenticate_user!
+    unless user_signed_in?
+      store_location_for(:user, request.url)
+      redirect_to root_url
+    end
+  end
+
   def user_not_authorized
     flash[:alert] = I18n.t('app.unauthorized')
     redirect_to(request.referrer || root_path)

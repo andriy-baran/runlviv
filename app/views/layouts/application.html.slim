@@ -3,7 +3,13 @@ html
   head
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     title
-      = content_for?(:title) ? yield(:title) : 'Run Lviv'
+      / = content_for?(:title) ? yield(:title) : 'Run Lviv'
+      = display_meta_tags site: 'Run Lviv'
+      <meta property="fb:app_id" content="951512148331077" />
+      <meta property="og:type"   content="website" />
+      <meta property="og:url"    content="http://runlviv.otaman.co" />
+      <meta property="og:title"  content="RunLviv | Running community website" />
+      <meta property="og:image"  content="http://runlviv.otaman.co/assets/cover.jpg" />
     meta name="description" content="#{content_for?(:description) ? yield(:description) : 'Run Lviv'}"
     / == stylesheet_link_tag "https://getbootstrap.com/docs/4.0/examples/cover/cover.css"
     == stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
