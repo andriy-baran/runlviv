@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+    resources :runs
+
+    root to: "users#index"
+  end
+
   get 'terms-of-service', to: 'pages#terms_of_service'
   get 'privacy-policy', to: 'pages#privacy_policy'
   get 'contact', to: 'pages#contact'
