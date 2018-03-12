@@ -48,6 +48,12 @@ en:
   profile:
     new_run: Create new run
     my_runs: My runs
+  contact:
+    hello: How we can help You?
+    email: Enter your email
+    body: Enter your message
+    submit: Send message
+    message_sent: Your message was sent
   runs:
     place: Place
     time: Time

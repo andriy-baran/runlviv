@@ -26,7 +26,7 @@ uk:
     # attributes:
     #   r:
     #     login: "Handle"
-  hello: "Hello world"
+  hello: Привіт!
   app:
     unauthorized: У Вас немає прав на цю дію
   domain:
@@ -54,6 +54,12 @@ uk:
   profile:
     new_run: Додати забіг
     my_runs: Мої забіги
+  contact:
+    hello: Чим можемо допомогти?
+    email: Введіть свій Е-мейл
+    body: Введіть своє повідомлення
+    submit: Надіслати повідомлення
+    message_sent: Ваше повідомлення відправлено
   runs:
     place: Місце старту
     time: Час

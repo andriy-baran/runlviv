@@ -29,6 +29,8 @@ gem 'rails-i18n', '~> 5.1'
 gem 'pundit'
 gem 'meta-tags'
 gem 'administrate'
+gem 'acts_as_votable', '~> 0.11.1'
+gem 'koala'
 group :development do
   gem 'therubyracer', :platform => :ruby
   gem 'better_errors'

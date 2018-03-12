@@ -48,8 +48,7 @@ html
             / a.nav-link.active href="#"
             /   = I18n.t('main_page.privacy')
             = link_to I18n.t('main_page.runs'), runs_path, class: 'nav-link'
-            a.nav-link href="#"
-              = I18n.t('main_page.contact')
+            = link_to I18n.t('main_page.contact'), contact_path, class: 'nav-link'
             - if user_signed_in?
               = link_to I18n.t('main_page.profile'), profile_user_path(current_user), class: 'nav-link'
       .cover-container.align-self-center.d-flex.align-items-center
