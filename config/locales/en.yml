@@ -63,3 +63,5 @@ en:
     explain: "is planing to run at %{time} from %{place}"
     new: Create new run
     edit: Editing run
+  group_runs:
+    join: Join this run

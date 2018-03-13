@@ -25,6 +25,9 @@
           p.h3
             = @run.tempo || 'N/A'
   .card-footer
-    - if policy(@run).update?
-      = link_to I18n.t('runs.edit'), edit_run_path(@run), class: 'btn btn-sm btn-warning btn-block'
+    - if policy(@run).edit?
+      = link_to I18n.t('runs.edit'), edit_run_path(@run), class: 'btn btn-warning btn-block'
+    - else
+      a href="#" class="btn  btn-info btn-block"
+        = I18n.t('group_runs.join')
 

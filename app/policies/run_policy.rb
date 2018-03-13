@@ -8,7 +8,7 @@ class RunPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user_id = user.id
+    record.user_id == user.id
   end
 
   def new?
