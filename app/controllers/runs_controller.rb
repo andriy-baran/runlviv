@@ -5,7 +5,7 @@ class RunsController < ApplicationController
   # GET /runs
   # GET /runs.json
   def index
-    @runs = Run.all.order(:beginning)
+    @runs = Run.preload(:group_run, :user).where('beginning > ?', Time.now).order(:beginning)
     @runs_by_date = @runs.group_by{ |run| run.beginning.to_date }
   end
 
