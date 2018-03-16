@@ -23,6 +23,7 @@ uk:
   activerecord:
     models:
       run: Забіг
+      group_run: Груповий забіг
     # attributes:
     #   r:
     #     login: "Handle"
@@ -70,4 +71,10 @@ uk:
     new: Сторення нового забігу
     edit: Редагування забігу
   group_runs:
-    join: Приєднатись (Вже скоро)
+    join: Приєднатись
+    join_failed: На жаль не вдалось обєднати ваші забіги
+    join_success: Ви успішно приєдналисть до забігу
+    edit: Редагувати груповий забіг
+    explain: "планують починати %{time} з %{place}"
+    updated: Інформацію про забіг оновлено
+

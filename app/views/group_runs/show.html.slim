@@ -1,0 +1,39 @@
+.card.bg-semi-black
+  .card-header
+    - @group_run.runs.each_slice(2) do |run1, run2|
+      .row
+        .col
+          = link_to profile_user_path(run1.user) do
+            = image_tag "#{run1.user.image}?type=large", class: 'rounded-circle', size: '100x100'
+        .col
+          - if run2.present?
+            = link_to profile_user_path(run2.user) do
+              = image_tag "#{run2.user.image}?type=large", class: 'rounded-circle', size: '100x100'
+  .card-body
+    .row.align-items-start
+      .col
+        .d-block.my-5
+          i.fa.fa-map-marker.fa-3x.rounded-circle
+          p.h3
+            = @group_run.place
+      .col
+        .d-block.my-5
+          i.fa.fa-clock-o.fa-3x
+          p.h3
+            = format_time(@group_run.beginning)
+    .row.align-items-start
+      .col
+        .d-block.my-5
+          i.fa.fa-road.fa-3x
+          p.h3
+            = @group_run.distance || 'N/A'
+      .col
+        .d-block.my-5
+          i.fa.fa-heartbeat.fa-3x
+          p.h3
+            = @group_run.tempo || 'N/A'
+  .card-footer
+    - if policy(@group_run).edit?
+      = link_to I18n.t('group_runs.edit'), edit_group_run_path(@group_run), class: 'btn btn-warning btn-block'
+    - elsif policy(@group_run).join?
+      = link_to I18n.t('group_group_runs.join'), add_user_group_run_path(@group_run, user_id: current_user.id), method: :post, class: 'btn  btn-info btn-block'

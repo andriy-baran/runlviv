@@ -1,0 +1,19 @@
+h1 Listing group_runs
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @group_runs.each do |group_run|
+      tr
+        td = link_to 'Show', group_run
+        td = link_to 'Edit', edit_group_run_path(group_run)
+        td = link_to 'Destroy', group_run, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Group run', new_group_run_path

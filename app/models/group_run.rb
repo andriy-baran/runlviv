@@ -1,12 +1,15 @@
-class Run < ApplicationRecord
-  belongs_to :user
-  belongs_to :group_run
+class GroupRun < ApplicationRecord
+  has_many :runs
 
   validates :place, :beginning, :start_date, :start_time, presence: true
 
   attr_accessor :start_date, :start_time
 
   after_initialize :set_time_and_date
+
+  def users_names
+    runs.map{ |run| run.user.name }.join(', ')
+  end
 
   private
 

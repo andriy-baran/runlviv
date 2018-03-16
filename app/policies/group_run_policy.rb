@@ -1,4 +1,4 @@
-class RunPolicy < ApplicationPolicy
+class GroupRunPolicy < ApplicationPolicy
   def index?
     true
   end
@@ -16,11 +16,11 @@ class RunPolicy < ApplicationPolicy
   end
 
   def update?
-    create?
+    record.runs.exists?(user_id: user.id)
   end
 
   def edit?
-    update? && record.group_run.nil?
+    update?
   end
 
   def destroy?
@@ -28,7 +28,7 @@ class RunPolicy < ApplicationPolicy
   end
 
   def join?
-    record.group_run.nil?
+    record.runs.detect{ |run| run.user_id == user.id }.nil?
   end
 
   class Scope < Scope

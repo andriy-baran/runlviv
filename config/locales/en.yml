@@ -65,3 +65,8 @@ en:
     edit: Editing run
   group_runs:
     join: Join this run
+    join_failed: There were some problems
+    join_success: You have successfully joined the run
+    explain: "are planing to run at %{time} from %{place}"
+    edit: Edit group run
+    updated: Group run was successfully updated.

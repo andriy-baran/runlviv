@@ -1,0 +1,15 @@
+= form_for @group_run do |f|
+  .form-group
+    label
+    = f.text_field :place, placeholder: t('domain.runs.place'), class: 'form-control form-control-lg'
+  .row
+    .form-group.col-sm-6
+      = f.text_field :start_date, placeholder: t('domain.runs.start_date'), class: 'form-control form-control-lg date-input', data: {value: f.object.start_date }
+    .form-group.col-sm-6
+      = f.text_field :start_time, placeholder: t('domain.runs.start_time'), class: 'form-control form-control-lg time-input'
+  .row
+    .form-group.col-sm-6
+      = f.text_field :distance, placeholder: t('domain.runs.distance'), class: 'form-control form-control-lg'
+    .form-group.col-sm-6
+      = f.select :tempo, options_for_select(tempo_options, f.object.tempo), { include_blank: true, prompt: I18n.t('domain.runs.tempo_plh') }, class: 'form-control form-control-lg'
+  .actions = f.submit class: 'btn btn-success btn-lg'

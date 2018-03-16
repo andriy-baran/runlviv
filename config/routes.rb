@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   post 'contact', to: 'pages#contact', as: :send_support_message
 
   resources :runs
+  resources :group_runs do
+    post :add_user, on: :member
+  end
   root to: 'visitors#index'
   devise_for :users, controllers: { omniauth_callbacks: 'sessions' }
 
