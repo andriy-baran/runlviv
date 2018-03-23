@@ -208,6 +208,9 @@ GEM
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
+    omniauth-strava (0.0.6)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
     parser (2.4.0.2)
@@ -393,6 +396,7 @@ DEPENDENCIES
   launchy
   meta-tags
   omniauth-facebook
+  omniauth-strava
   pg (~> 0.21)
   pickadate-rails
   pry-rails

@@ -9,3 +9,5 @@ hr
     = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success btn-sm'
   p
     = link_to I18n.t('profile.my_runs'), runs_user_path(@user), class: 'btn btn-warning btn-sm'
+
+= link_to 'Connect Strava', "http://www.strava.com/oauth/authorize?client_id=#{Rails.application.secrets.strava_client_id}&response_type=code&redirect_uri=#{inregration_url}&approval_prompt=force&scope=write", class 'btn btn-success'

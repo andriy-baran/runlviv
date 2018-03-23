@@ -11,6 +11,10 @@ class SessionsController < Devise::OmniauthCallbacksController
     end
   end
 
+  def strava
+
+  end
+
   def failure
     redirect_to root_path
   end
