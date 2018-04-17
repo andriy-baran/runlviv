@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class RunDashboard < Administrate::BaseDashboard
+class StravaImportDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,13 +9,12 @@ class RunDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    group_run: Field::BelongsTo,
     id: Field::Number,
-    place: Field::String,
-    distance: Field::String,
-    tempo: Field::String,
+    strava_id: Field::Number,
+    distance: Field::Number.with_options(decimals: 2),
+    name: Field::String,
+    avg_speed: Field::Number.with_options(decimals: 2),
     beginning: Field::DateTime,
-    competition_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,7 +27,7 @@ class RunDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :user,
     :id,
-    :place,
+    :strava_id,
     :distance,
   ].freeze
 
@@ -37,9 +36,10 @@ class RunDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :id,
-    :place,
+    :strava_id,
     :distance,
-    :tempo,
+    :name,
+    :avg_speed,
     :beginning,
     :created_at,
     :updated_at,
@@ -50,16 +50,17 @@ class RunDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :user,
-    :place,
+    :strava_id,
     :distance,
-    :tempo,
+    :name,
+    :avg_speed,
     :beginning,
   ].freeze
 
-  # Overwrite this method to customize how runs are displayed
+  # Overwrite this method to customize how strava imports are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(run)
-  #   "Run ##{run.id}"
+  # def display_resource(strava_import)
+  #   "StravaImport ##{strava_import.id}"
   # end
 end

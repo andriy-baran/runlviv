@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314072011) do
+ActiveRecord::Schema.define(version: 20180415042647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "challenges", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "competitions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "start"
+    t.date "finish"
+    t.bigint "challenge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["challenge_id"], name: "index_competitions_on_challenge_id"
+  end
 
   create_table "group_runs", force: :cascade do |t|
     t.string "title"
@@ -34,8 +52,22 @@ ActiveRecord::Schema.define(version: 20180314072011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_run_id"
+    t.bigint "competition_id"
+    t.index ["competition_id"], name: "index_runs_on_competition_id"
     t.index ["group_run_id"], name: "index_runs_on_group_run_id"
     t.index ["user_id"], name: "index_runs_on_user_id"
+  end
+
+  create_table "strava_imports", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "strava_id"
+    t.float "distance"
+    t.string "name"
+    t.float "avg_speed"
+    t.datetime "beginning"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_strava_imports_on_user_id"
   end
 
   create_table "support_messages", force: :cascade do |t|
@@ -67,6 +99,8 @@ ActiveRecord::Schema.define(version: 20180314072011) do
     t.string "age_range"
     t.string "link"
     t.text "image"
+    t.integer "strava_athlete_id"
+    t.string "strava_access_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -85,4 +119,5 @@ ActiveRecord::Schema.define(version: 20180314072011) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
+  add_foreign_key "strava_imports", "users"
 end

@@ -1,13 +1,32 @@
-table.table.table-responsive.table-hover.table-striped.bg-semi-black
-  tbody
-    - @runs.each do |run|
-      tr
-        td.p-5
-          = link_to run do
-            .h1
-              i.fa.fa-calendar
-              | &nbsp
-              / = link_to run do
-              = run.beginning.strftime('%H:%M')
-              | &nbsp
-              = run.beginning.strftime('%d/%m')
+- if @runs.blank? && @strava_runs.blank?
+  | У вас немає забігів
+  p
+    = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success'
+- else
+  - @runs.each do |run|
+    .card.bg-semi-black.p-4
+        = link_to run do
+          p.h4
+            i.fa.fa-map-marker.rounded-circle
+            | &nbsp
+            = run.place
+          p.h4
+            | &nbsp
+            / = link_to run do
+            = run.beginning.strftime('%H:%M')
+            | &nbsp
+            = run.beginning.strftime('%d/%m')
+  - if current_user.strava?
+    h2 Strava
+    = link_to 'Імпортувати Strava', import_strava_runs_path, class: 'btn btn-primary'
+  - @strava_runs.each do |run|
+    .card.bg-semi-black.p-4
+      = link_to strava_activity_path(run.strava_id), target: '_blank' do
+        p.h4
+          = "#{run.name} / #{(run.distance.to_f/1000.0).round(2)}"
+        p.h4
+          | &nbsp
+          / = link_to run do
+          = run.beginning.strftime('%H:%M')
+          | &nbsp
+          = run.beginning.strftime('%d/%m')

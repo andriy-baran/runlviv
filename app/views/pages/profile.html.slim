@@ -1,13 +1,16 @@
 - set_meta_tags title: "#{@user.name}'s Running Profile"
-p
-  = image_tag "#{@user.image}?type=large", class: 'img-thumbnail'
-h2
-  = @user.name
-hr
-- if @user.id == current_user.id
-  p
-    = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success btn-sm'
-  p
-    = link_to I18n.t('profile.my_runs'), runs_user_path(@user), class: 'btn btn-warning btn-sm'
-
-= link_to 'Connect Strava', "http://www.strava.com/oauth/authorize?client_id=#{Rails.application.secrets.strava_client_id}&response_type=code&redirect_uri=#{inregration_url}&approval_prompt=force&scope=write", class 'btn btn-success'
+= image_tag "#{@user.image}?type=large", class: 'rounded-circle p-3'
+.card.bg-semi-black
+  h2
+    = @user.name
+  .card-footer
+    - if @user.id == current_user.id
+      p
+        = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success'
+      p
+        = link_to I18n.t('profile.my_runs'), runs_user_path(@user), class: 'btn btn-warning'
+      - if current_user.strava?
+        = link_to 'Імпортувати Strava', import_strava_runs_path, class: 'btn btn-primary'
+      - else current_user.strava?
+        p
+          = link_to 'Connect Strava', "http://www.strava.com/oauth/authorize?client_id=#{Rails.application.secrets.strava_client_id}&response_type=code&redirect_uri=#{strava_integration_url}&approval_prompt=force&scope=write&state=#{current_user.id}", class: 'btn btn-primary'

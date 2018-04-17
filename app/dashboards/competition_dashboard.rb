@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class RunDashboard < Administrate::BaseDashboard
+class CompetitionDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,14 +8,12 @@ class RunDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo,
-    group_run: Field::BelongsTo,
     id: Field::Number,
-    place: Field::String,
-    distance: Field::String,
-    tempo: Field::String,
-    beginning: Field::DateTime,
-    competition_id: Field::Number,
+    title: Field::String,
+    description: Field::Text,
+    start: Field::DateTime,
+    finish: Field::DateTime,
+    challenge: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,40 +24,41 @@ class RunDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :user,
     :id,
-    :place,
-    :distance,
+    :title,
+    :start,
+    :finish
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :user,
     :id,
-    :place,
-    :distance,
-    :tempo,
-    :beginning,
+    :title,
+    :description,
+    :start,
+    :finish,
+    :challenge,
     :created_at,
-    :updated_at,
+    :updated_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user,
-    :place,
-    :distance,
-    :tempo,
-    :beginning,
+    :id,
+    :title,
+    :description,
+    :start,
+    :finish,
+    :challenge
   ].freeze
 
-  # Overwrite this method to customize how runs are displayed
+  # Overwrite this method to customize how competitions are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(run)
-  #   "Run ##{run.id}"
+  # def display_resource(competition)
+  #   "Competition ##{competition.id}"
   # end
 end
