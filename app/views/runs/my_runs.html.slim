@@ -18,12 +18,12 @@
             = run.beginning.strftime('%d/%m')
   - if current_user.strava?
     h2 Strava
-    = link_to 'Імпортувати Strava', import_strava_runs_path, class: 'btn btn-primary'
+    = link_to 'Імпортувати Strava', import_strava_runs_path, class: 'btn btn-primary mb-2'
   - @strava_runs.each do |run|
-    .card.bg-semi-black.p-4
+    .card.bg-semi-black.p-2
       = link_to strava_activity_path(run.strava_id), target: '_blank' do
         p.h4
-          = "#{run.name} / #{(run.distance.to_f/1000.0).round(2)}"
+          = "#{run.name} / #{(run.distance.to_f/1000.0).round(2)} км"
         p.h4
           | &nbsp
           / = link_to run do

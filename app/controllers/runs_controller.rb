@@ -22,6 +22,7 @@ class RunsController < ApplicationController
   # GET /runs/new
   def new
     @run = Run.new
+    @competitions = Competition.includes(:challenge).where('finish > ?', Time.now)
   end
 
   # GET /runs/1/edit
@@ -34,6 +35,7 @@ class RunsController < ApplicationController
   def create
     params_obj = ::RunParams.new(run_params)
     @run = current_user.runs.new(params_obj.model_attrs)
+    @competitions = Competition.where('finish > ?', Time.now)
     authorize @run
     respond_to do |format|
       if @run.save
@@ -84,6 +86,7 @@ class RunsController < ApplicationController
         avg_speed: activity['average_speed'],
         beginning: Time.zone.parse(activity['start_date'])
       }
+      current_user.strava_imports.create(attrs)
     end
     redirect_to request.referer, notice: 'Успішно!'
   rescue Strava::Api::V3::ServerError

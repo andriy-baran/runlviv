@@ -6,11 +6,11 @@
   .card-footer
     - if @user.id == current_user.id
       p
-        = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success'
+        = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success btn-block'
       p
-        = link_to I18n.t('profile.my_runs'), runs_user_path(@user), class: 'btn btn-warning'
+        = link_to I18n.t('profile.my_runs'), runs_user_path(@user), class: 'btn btn-warning btn-block'
       - if current_user.strava?
-        = link_to 'Імпортувати Strava', import_strava_runs_path, class: 'btn btn-primary'
+        = link_to 'Імпортувати Strava', import_strava_runs_path, class: 'btn btn-primary btn-block'
       - else current_user.strava?
         p
-          = link_to 'Connect Strava', "http://www.strava.com/oauth/authorize?client_id=#{Rails.application.secrets.strava_client_id}&response_type=code&redirect_uri=#{strava_integration_url}&approval_prompt=force&scope=write&state=#{current_user.id}", class: 'btn btn-primary'
+          = link_to 'Connect Strava', "http://www.strava.com/oauth/authorize?client_id=#{Rails.application.secrets.strava_client_id}&response_type=code&redirect_uri=#{strava_integration_url}&approval_prompt=force&scope=write&state=#{current_user.id}", class: 'btn btn-primary btn-block'
