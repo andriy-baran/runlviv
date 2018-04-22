@@ -16,6 +16,12 @@ html
     == javascript_include_tag 'https://unpkg.com/popper.js@1.12.9/dist/umd/popper.js', 'data-turbolinks-track' => 'reload'
     == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
     == csrf_meta_tags
+    javascript:
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-113378753-1', 'auto');
+      ga('send', 'pageview');
+    script async=true src="//www.google-analytics.com/analytics.js"
+
   body
     #fb-root
       javascript:
@@ -47,6 +53,7 @@ html
           nav.nav.nav-masthead
             / a.nav-link.active href="#"
             /   = I18n.t('main_page.privacy')
+            = link_to 'Виклики', challenges_path, class: 'nav-link'
             = link_to I18n.t('main_page.runs'), runs_path, class: 'nav-link'
             = link_to I18n.t('main_page.contact'), contact_path, class: 'nav-link'
             - if user_signed_in?

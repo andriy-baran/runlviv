@@ -1,0 +1,8 @@
+- @challenges.each do |challenge|
+  h2
+    = challenge.title
+  = challenge.description
+  - challenge.competitions.each do |competition|
+    h3
+      = competition.title
+    = competition.description

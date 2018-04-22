@@ -2,16 +2,30 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :runs
+    resources :support_messages
+    resources :group_runs
+    resources :strava_imports
+    resources :competitions
+    resources :challenges
 
     root to: "users#index"
   end
+
+  devise_scope :user do
+    get '/auth/strava/callback', to: 'sessions#strava', as: :strava_integration
+  end
+  # get '/auth/strava', to: 'sessions#create', as: :strava
 
   get 'terms-of-service', to: 'pages#terms_of_service'
   get 'privacy-policy', to: 'pages#privacy_policy'
   get 'contact', to: 'pages#contact'
   post 'contact', to: 'pages#contact', as: :send_support_message
 
-  resources :runs
+  resources :challenges, only: :index
+  resources :competitions, only: [:index, :show]
+  resources :runs do
+    get :import_strava, on: :collection
+  end
   resources :group_runs do
     post :add_user, on: :member
   end
