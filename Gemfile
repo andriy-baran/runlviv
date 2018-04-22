@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'puma', group: :production
+gem 'sitemap_generator'
 
 group :development do
   gem 'web-console', '~> 2.0'
@@ -31,6 +32,7 @@ gem 'meta-tags'
 gem 'administrate'
 gem 'acts_as_votable', '~> 0.11.1'
 gem 'koala'
+gem 'strava-api-v3'
 group :development do
   gem 'therubyracer', :platform => :ruby
   gem 'better_errors'

@@ -24,6 +24,9 @@ uk:
     models:
       run: Забіг
       group_run: Груповий забіг
+      strava_import: Strava
+      competition: Змагання
+      challenge: Виклик
     # attributes:
     #   r:
     #     login: "Handle"

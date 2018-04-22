@@ -9,11 +9,13 @@ class RunDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
+    group_run: Field::BelongsTo,
     id: Field::Number,
     place: Field::String,
     distance: Field::String,
     tempo: Field::String,
     beginning: Field::DateTime,
+    competition_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -52,6 +54,7 @@ class RunDashboard < Administrate::BaseDashboard
     :distance,
     :tempo,
     :beginning,
+    :approved
   ].freeze
 
   # Overwrite this method to customize how runs are displayed

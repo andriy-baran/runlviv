@@ -1,5 +1,6 @@
 class GroupRun < ApplicationRecord
   has_many :runs
+  has_many :users, through: :runs
 
   validates :place, :beginning, :start_date, :start_time, presence: true
 

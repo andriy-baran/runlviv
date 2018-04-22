@@ -1,6 +1,6 @@
 set :stage, :production
 
-server '207.154.226.131', user: 'otaman', roles: %w{web app db docker}
+server '46.101.131.156', user: 'otaman', roles: %w{web app db docker}
 
 # namespace :custom do
 #   task :setup_container do

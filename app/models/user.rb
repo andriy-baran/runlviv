@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :runs
+  has_many :strava_imports
 
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
@@ -34,5 +35,9 @@ class User < ApplicationRecord
       user.link = auth.extra.raw_info.link
       user.image = auth.info.image
     end
+  end
+
+  def strava?
+    strava_athlete_id.present? && strava_access_token.present?
   end
 end
