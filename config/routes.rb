@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact'
   post 'contact', to: 'pages#contact', as: :send_support_message
 
+  resources :challenges, only: :index
+  resources :competitions, only: [:index, :show]
   resources :runs do
     get :import_strava, on: :collection
   end

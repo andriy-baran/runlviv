@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20180415042647) do
     t.datetime "updated_at", null: false
     t.bigint "group_run_id"
     t.bigint "competition_id"
+    t.boolean "approved", default: false
     t.index ["competition_id"], name: "index_runs_on_competition_id"
     t.index ["group_run_id"], name: "index_runs_on_group_run_id"
     t.index ["user_id"], name: "index_runs_on_user_id"
@@ -67,6 +68,8 @@ ActiveRecord::Schema.define(version: 20180415042647) do
     t.datetime "beginning"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "run_id"
+    t.index ["run_id"], name: "index_strava_imports_on_run_id"
     t.index ["user_id"], name: "index_strava_imports_on_user_id"
   end
 

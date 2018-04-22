@@ -54,6 +54,7 @@ class RunDashboard < Administrate::BaseDashboard
     :distance,
     :tempo,
     :beginning,
+    :approved
   ].freeze
 
   # Overwrite this method to customize how runs are displayed
