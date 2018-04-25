@@ -1,8 +1,13 @@
 - @challenges.each do |challenge|
-  h2
-    = challenge.title
-  = challenge.description
-  - challenge.competitions.each do |competition|
-    h3
-      = competition.title
-    = competition.description
+  .card.bg-secondary
+    .card-header
+      h2
+        = challenge.title
+    .card-body
+      p.text-left
+        = challenge.description
+      - challenge.competitions.each do |competition|
+        h3
+          = competition.title
+        p.text-left
+          = competition.description

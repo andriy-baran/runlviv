@@ -33,7 +33,7 @@ body {
 }
 
 body {
-  background: url(cover.jpg) no-repeat center center fixed;
+  background: url(clique.jpg) no-repeat center center fixed;
   background-size: cover;
   background-attachment: fixed;
   color: #fff;
@@ -43,7 +43,7 @@ body {
 }
 
 .background {
-  background: url(cover.jpg) no-repeat center center fixed;
+  background: url(clique.jpg) no-repeat center center fixed;
   /*
   background-size: cover OR 100% (height will be set automatically) OR 100% 100% (strech image)
   Safari might have problems with "background-size: cover" and "background-attachment: fixed". Fix: set "background-size" to "100%" or "100% 100%"
@@ -215,4 +215,11 @@ body {
     width: 100%;
   }
 }
+
+.profile-card img { z-index: 10; }
+.profile-card .card {
+  top: -140px;
+  z-index: 1;
+}
+.profile-card .card h2 { margin-top: 100px; }
 

@@ -1,11 +1,13 @@
-h1 = I18n.t('hello')
-h1 = I18n.t('contact.hello')
+.card.bg-semi-black
+  .card-body
+    h1 = I18n.t('hello')
+    h1 = I18n.t('contact.hello')
 
-= form_for @support_message, url: send_support_message_path  do |f|
-  .form-group
-    label
-    = f.text_field :email, placeholder: t('contact.email'), class: 'form-control form-control-lg', data: { email: @user.email }
-  .form-group
-    label
-    = f.text_area :body, placeholder: t('contact.body'), rows: 4, class: 'form-control form-control-lg'
-  .actions = f.submit t('contact.submit'), class: 'btn btn-success btn-block btn-lg'
+    = form_for @support_message, url: send_support_message_path  do |f|
+      .form-group
+        label
+        = f.text_field :email, placeholder: t('contact.email'), class: 'form-control form-control-lg', data: { email: @user.email }
+      .form-group
+        label
+        = f.text_area :body, placeholder: t('contact.body'), rows: 4, class: 'form-control form-control-lg'
+      .actions = f.submit t('contact.submit'), class: 'btn btn-success btn-block btn-lg'
