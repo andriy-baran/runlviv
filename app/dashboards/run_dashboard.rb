@@ -10,6 +10,8 @@ class RunDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     group_run: Field::BelongsTo,
+    strava_imports: Field::HasMany,
+    competition: Field::BelongsTo,
     id: Field::Number,
     place: Field::String,
     distance: Field::String,
@@ -38,6 +40,8 @@ class RunDashboard < Administrate::BaseDashboard
     :user,
     :id,
     :place,
+    :strava_imports,
+    :competition,
     :distance,
     :tempo,
     :beginning,

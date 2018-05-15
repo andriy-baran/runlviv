@@ -9,6 +9,7 @@ class CompetitionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    runs: Field::HasMany,
     title: Field::String,
     description: Field::Text,
     start: Field::DateTime,
@@ -40,7 +41,8 @@ class CompetitionDashboard < Administrate::BaseDashboard
     :finish,
     :challenge,
     :created_at,
-    :updated_at
+    :updated_at,
+    :runs
   ].freeze
 
   # FORM_ATTRIBUTES

@@ -1,5 +1,5 @@
 - if @runs.blank? && @strava_runs.blank?
-  | У вас немає забігів
+  | У вас немає запланованих забігів
   p
     = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success'
 - else

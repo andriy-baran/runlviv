@@ -1,13 +1,13 @@
 = form_for @run do |f|
   - if @competitions.any?
     .form-group
-      .btn-group-vertical.btn-group-toggle data-toggle="buttons" role="group"
-        - @competitions.each do |competition|
-          .btn.btn-default
-            input type="radio" = competition.full_title
+      - @competitions.each do |competition|
+        .btn.btn-info.btn-block.btn-lg.shadow-lg
+          = competition.full_title
   .form-group
     label
     = f.text_field :place, placeholder: t('domain.runs.place'), class: 'form-control form-control-lg'
+    = f.hidden_field :competition_id
   .row
     .form-group.col-sm-6
       = f.text_field :start_date, placeholder: t('domain.runs.start_date'), class: 'form-control form-control-lg date-input', data: {value: f.object.start_date }
