@@ -16,10 +16,11 @@
             - if competition.runs.any?
               | Учасники
               - competition.users.uniq.each do |user|
-                .progress
-                  <div class="progress-bar" role="progressbar" aria-valuenow="#{competition.user_result(user.id)}" aria-valuemin="0" aria-valuemax="100" style="width: #{competition.user_progress(user.id)}%;" >
-                  = user.name
-                  </div>
+                div.d-flex.flex-row.justify-content-start.align-items-center
+                  = image_tag "#{user.image}", class: 'rounded-circle float-left mr-1'
+                  .progress.w-100 style="height: 30px;"
+                    .progress-bar role="progressbar" aria-valuenow="#{competition.user_result(user.id)}" aria-valuemin="0" aria-valuemax="100" style="width: 57%;"
+                      span.text-dark= user.name
 
             - if competition.actual?
               p

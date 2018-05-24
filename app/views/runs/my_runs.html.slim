@@ -4,8 +4,12 @@
     = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success'
 - else
   - @runs.each do |run|
-    .card.bg-semi-black.p-4.my-1
-        = link_to run do
+    .card.bg-semi-black.my-1
+      = link_to run do
+        - if run.competition_id
+          .card-header.py-0
+            small.text-warning = run.competition.full_title
+        .card-body.pb-0
           p.h4
             i.fa.fa-map-marker.rounded-circle
             | &nbsp
@@ -16,6 +20,12 @@
             = run.beginning.strftime('%H:%M')
             | &nbsp
             = run.beginning.strftime('%d/%m')
+        .card-footer.py-0
+          - if run.strava_imports.first
+          .badge.badge-warning.mr-1 Strava
+          - if run.group_run_id
+            .badge.badge-success.mr-1 Груповий
+
   - if current_user.strava?
     h2 Strava
     = link_to import_strava_runs_path, class: 'btn btn-primary mb-2' do
