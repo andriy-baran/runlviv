@@ -9,11 +9,11 @@ services:
     ports:
       - '80:80'
     volumes:
-      - ./appdata:/runlviv/public
+      - ./appdata:/runlviv/public/shared
   app:
     build: .
     volumes:
-      - ./appdata:/runlviv/public
+      - ./appdata:/runlviv/public/shared
     ports:
       - '3000:3000'
     depends_on:
