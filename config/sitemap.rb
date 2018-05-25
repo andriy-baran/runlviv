@@ -18,6 +18,7 @@ SitemapGenerator::Sitemap.create do
   # Add '/articles'
   #
   add runs_path, :priority => 1, :changefreq => 'daily'
+  add challenges_path, :priority => 1, :changefreq => 'weekly'
   #
   # Add all articles:
   #

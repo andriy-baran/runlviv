@@ -8,10 +8,12 @@ services:
       - app
     ports:
       - '80:80'
+    volumes:
+      - ./appdata:/runlviv/public
   app:
     build: .
     volumes:
-      - /runlviv
+      - ./appdata:/runlviv/public
     ports:
       - '3000:3000'
     depends_on:
