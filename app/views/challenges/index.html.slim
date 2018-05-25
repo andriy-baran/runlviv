@@ -1,18 +1,18 @@
 - @challenges.each do |challenge|
   .card.bg-semi-black.row.border.border-warning
     .card-header
-      = challenge.title
+      = challenge.title.html_safe
     .card-body.px-2
       p.text-left
-        = challenge.description
+        = challenge.description.html_safe
       - challenge.competitions.order('start DESC').each do |competition|
         .card.bg-transparent.my-3.border.border-info
           .card-header
-            = competition.title
+            = competition.title.html_safe
             small.text-info = " (#{competition.status})"
           .card-body.px-2
             .text-left
-              = competition.description
+              = competition.description.html_safe
             - if competition.strava_imports.any?
               .list-group.mt-3
                 .list-group-item.bg-transparent.px-2.border.border-0
