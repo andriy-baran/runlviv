@@ -1,17 +1,21 @@
 - set_meta_tags title: "#{@user.name}'s Running Profile"
 .profile-card
   = image_tag "#{@user.image}?type=large", class: 'rounded-circle p-5 position-relative'
-  .card.bg-secondary.w-100.position-relative
+  .card.bg-semi-black.w-100.position-relative.border.border-warning
     h2
       = @user.name
     .card-footer
       - if @user.id == current_user.id
         p
-          = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success btn-block'
+          = link_to new_run_path, class: 'btn btn-success btn-block'
+            i.fa.fa-calendar
+            | &nbsp
+            = I18n.t('profile.new_run')
         p
-          = link_to I18n.t('profile.my_runs'), runs_user_path(@user), class: 'btn btn-warning btn-block'
-        - if current_user.strava?
-          = link_to 'Імпортувати Strava', import_strava_runs_path, class: 'btn btn-primary btn-block'
-        - else current_user.strava?
+          = link_to runs_user_path(@user), class: 'btn btn-warning btn-block'
+            i.fa.fa-list-alt
+            | &nbsp
+            = I18n.t('profile.my_runs')
+        - unless current_user.strava?
           p
             = link_to 'Приєднати Strava', "http://www.strava.com/oauth/authorize?client_id=#{Rails.application.secrets.strava_client_id}&response_type=code&redirect_uri=#{strava_integration_url}&approval_prompt=force&scope=write&state=#{current_user.id}", class: 'btn btn-primary btn-block'

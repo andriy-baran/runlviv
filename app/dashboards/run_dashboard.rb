@@ -20,6 +20,7 @@ class RunDashboard < Administrate::BaseDashboard
     competition_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    approved: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -47,6 +48,7 @@ class RunDashboard < Administrate::BaseDashboard
     :beginning,
     :created_at,
     :updated_at,
+    :approved
   ].freeze
 
   # FORM_ATTRIBUTES

@@ -10,6 +10,14 @@ class Run < ApplicationRecord
 
   after_initialize :set_time_and_date
 
+  def not_started?
+    beginning > Time.current
+  end
+
+  def finished?
+    beginning < Time.current
+  end
+
   private
 
   def set_time_and_date

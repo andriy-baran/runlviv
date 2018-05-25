@@ -11,6 +11,7 @@ class CompetitionDashboard < Administrate::BaseDashboard
     id: Field::Number,
     runs: Field::HasMany,
     title: Field::String,
+    min_distance: Field::Number,
     description: Field::Text,
     start: Field::DateTime,
     finish: Field::DateTime,
@@ -42,7 +43,8 @@ class CompetitionDashboard < Administrate::BaseDashboard
     :challenge,
     :created_at,
     :updated_at,
-    :runs
+    :runs,
+    :min_distance
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -54,6 +56,7 @@ class CompetitionDashboard < Administrate::BaseDashboard
     :description,
     :start,
     :finish,
+    :min_distance,
     :challenge
   ].freeze
 

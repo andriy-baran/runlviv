@@ -4,7 +4,7 @@
     = link_to I18n.t('profile.new_run'), new_run_path, class: 'btn btn-success'
 - else
   - @runs.each do |run|
-    .card.bg-semi-black.my-1
+    .card.bg-semi-black.my-1.border.border-warning
       = link_to run do
         - if run.competition_id
           .card-header.py-0
@@ -21,10 +21,17 @@
             | &nbsp
             = run.beginning.strftime('%d/%m')
         .card-footer.py-0
+          - if run.competition_id
+            .badge.badge-danger.mr-1 #Змагання
           - if run.strava_imports.first
-          .badge.badge-warning.mr-1 Strava
+            .badge.badge-warning.mr-1 #Strava
           - if run.group_run_id
-            .badge.badge-success.mr-1 Груповий
+            .badge.badge-success.mr-1 #Груповий
+          .badge.badge-info.mr-1
+            - if run.not_started?
+              | #Запланований
+            - else
+              | #Завершений
 
   - if current_user.strava?
     h2 Strava
@@ -33,7 +40,7 @@
       | &nbsp
       | Імпортувати Strava
   - @strava_runs.each do |run|
-    .card.bg-semi-black.p-2.my-1.w-100
+    .card.bg-semi-black.p-2.my-1.w-100.border.border-warning
       = link_to strava_activity_path(run.strava_id), target: '_blank' do
         p.h4
           = "#{run.name} / #{(run.distance.to_f/1000.0).round(2)} км"

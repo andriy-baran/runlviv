@@ -128,7 +128,7 @@ class RunsController < ApplicationController
       }
       current_user.strava_imports.create(attrs)
     end
-    redirect_to request.referer, notice: 'Успішно!'
+    redirect_to runs_user_path(current_user), notice: 'Успішно!'
   rescue Strava::Api::V3::ServerError
     redirect_to request.referer, alert: 'Халепа! Щось пішло не так. Спробуйте ще раз'
   end

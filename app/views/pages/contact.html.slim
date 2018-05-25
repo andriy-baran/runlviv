@@ -1,7 +1,7 @@
-.card.bg-semi-black
+.card.bg-semi-black.border.border-warning
   .card-body
-    h1 = I18n.t('hello')
-    h1 = I18n.t('contact.hello')
+    h2 = I18n.t('hello')
+    h2 = I18n.t('contact.hello')
 
     = form_for @support_message, url: send_support_message_path  do |f|
       .form-group
