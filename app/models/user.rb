@@ -16,6 +16,14 @@ class User < ApplicationRecord
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
+  scope :sorted_by_results,
+    -> {
+         joins('INNER JOIN strava_imports ON strava_imports.run_id = runs.id')
+           .select('users.*, sum(strava_imports.distance) as result')
+           .group('users.id')
+           .order('result')
+       }
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]

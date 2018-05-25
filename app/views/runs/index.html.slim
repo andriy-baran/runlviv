@@ -42,7 +42,7 @@
         .list-group.d-none.d-sm-block.my-1
           - runs.each do |run|
             = link_to run_path(run) do
-              .list-group-item.p-0.bg-semi-black
+              .list-group-item.p-0.bg-semi-black.border.border-warning.my-1
                 .row
                   .h2.d-block.d-sm-none.position-absolute
                     span.badge.badge-success
@@ -59,7 +59,7 @@
                     = image_tag "#{run.user.image}?type=large", class: 'rounded float-sm-right', size: '100x100'
         - runs.each do |run|
           = link_to run_path(run) do
-            .card.d-block.d-sm-none.bg-semi-black.my-1.p-5
+            .card.d-block.d-sm-none.bg-semi-black.my-1.px-5.pt-5.border.border-warning
               = image_tag "#{run.user.image}?type=large", class: 'card-img-top rounded-circle', size: '200x200'
               .card-img-overlay.row
                 h1

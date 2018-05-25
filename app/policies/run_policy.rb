@@ -20,7 +20,7 @@ class RunPolicy < ApplicationPolicy
   end
 
   def edit?
-    update? && record.group_run.nil?
+    update? && record.group_run.nil? && (record.beginning + 1.day) > Time.current
   end
 
   def destroy?
@@ -28,7 +28,7 @@ class RunPolicy < ApplicationPolicy
   end
 
   def join?
-    record.group_run.nil?
+    record.group_run.nil? && record.not_started? && !create?
   end
 
   class Scope < Scope

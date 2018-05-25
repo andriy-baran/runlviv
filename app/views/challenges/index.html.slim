@@ -1,13 +1,39 @@
 - @challenges.each do |challenge|
-  .card.bg-secondary
+  .card.bg-semi-black.row.border.border-warning
     .card-header
-      h2
-        = challenge.title
-    .card-body
+      = challenge.title
+    .card-body.px-2
       p.text-left
         = challenge.description
-      - challenge.competitions.each do |competition|
-        h3
-          = competition.title
-        p.text-left
-          = competition.description
+      - challenge.competitions.order('start DESC').each do |competition|
+        .card.bg-transparent.my-3.border.border-info
+          .card-header
+            = competition.title
+            small.text-info = " (#{competition.status})"
+          .card-body.px-2
+            .text-left
+              = competition.description
+            - if competition.strava_imports.any?
+              .list-group.mt-3
+                .list-group-item.bg-transparent.px-2.border.border-0
+                  h4 Результати Учасників
+                - competition.users.sorted_by_results.uniq.each_with_index do |user, index|
+                  div.d-flex.flex-row.justify-content-start.align-items-center.list-group-item.bg-transparent.px-2.mb-1
+                    = image_tag "#{user.image}", class: 'rounded-circle float-left mr-3'
+                    .progress.w-100 style="height: 30px;"
+                      div class="progress-bar progress-bar-striped bg-#{index.zero? ? 'success' : index > 1 ? 'info' : 'warning'}" role="progressbar" aria-valuenow="#{competition.user_result(user.id)}" aria-valuemin="0" aria-valuemax="100" style="width: #{competition.user_progress(result: user.result)}%;"
+                        span.text-dark
+                          | &nbsp
+                          = "#{user.name} (#{user.result.to_i}/#{competition.min_distance})"
+
+            - if competition.actual?
+              p
+              = link_to new_run_path(run: {competition_id: competition.id}), class: 'btn btn-default btn-lg' do
+                  i.fa.fa-plus
+                  | &nbsp
+                  | Додати забіг
+          .card-footer
+            .text-light
+              = l(competition.start, format: '%d %B %Y')
+              | &nbsp-&nbsp
+              = l(competition.finish, format: '%d %B %Y')

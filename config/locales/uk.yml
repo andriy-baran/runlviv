@@ -56,7 +56,7 @@ uk:
     profile: Профіль
     runs: Забіги
   profile:
-    new_run: Додати забіг
+    new_run: Запланувати забіг
     my_runs: Мої забіги
   contact:
     hello: Чим можемо допомогти?

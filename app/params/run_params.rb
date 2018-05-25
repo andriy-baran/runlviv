@@ -11,7 +11,8 @@ class RunParams < OpenStruct
       start_date: start_date,
       start_time: start_time,
       tempo: tempo,
-      distance: distance
+      distance: distance,
+      competition_id: competition_id
     }
   end
 end

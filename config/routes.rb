@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :competitions, only: [:index, :show]
   resources :runs do
     get :import_strava, on: :collection
+    get :sync_strava, on: :member
   end
   resources :group_runs do
     post :add_user, on: :member

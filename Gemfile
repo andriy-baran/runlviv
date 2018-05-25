@@ -17,7 +17,7 @@ group :development do
 end
 
 gem 'administrate'
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 4.1.1'
 gem 'bourbon'
 gem 'devise'
 gem 'high_voltage'
