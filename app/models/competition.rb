@@ -39,6 +39,6 @@ class Competition < ApplicationRecord
   def status
     return 'Завершений' if finished?
     return 'Поточний' if actual?
-    return 'Не Розпрочатий' if not_started?
+    return 'Не Розпочатий' if not_started?
   end
 end
