@@ -5,17 +5,18 @@
     h2
       = @user.name
     .card-footer
-      - if @user.id == current_user.id
-        p
-          = link_to new_run_path, class: 'btn btn-success btn-block'
-            i.fa.fa-calendar
-            | &nbsp
-            = I18n.t('profile.new_run')
-        p
-          = link_to runs_user_path(@user), class: 'btn btn-warning btn-block'
-            i.fa.fa-list-alt
-            | &nbsp
-            = I18n.t('profile.my_runs')
-        - unless current_user.strava?
+      - if user_signed_in?
+        - if @user.id == current_user.id
           p
-            = link_to 'Приєднати Strava', "http://www.strava.com/oauth/authorize?client_id=#{Rails.application.secrets.strava_client_id}&response_type=code&redirect_uri=#{strava_integration_url}&approval_prompt=force&scope=write&state=#{current_user.id}", class: 'btn btn-primary btn-block'
+            = link_to new_run_path, class: 'btn btn-success btn-block'
+              i.fa.fa-calendar
+              | &nbsp
+              = I18n.t('profile.new_run')
+          p
+            = link_to runs_user_path(@user), class: 'btn btn-warning btn-block'
+              i.fa.fa-list-alt
+              | &nbsp
+              = I18n.t('profile.my_runs')
+          - unless current_user.strava?
+            p
+              = link_to 'Приєднати Strava', "http://www.strava.com/oauth/authorize?client_id=#{Rails.application.secrets.strava_client_id}&response_type=code&redirect_uri=#{strava_integration_url}&approval_prompt=force&scope=write&state=#{current_user.id}", class: 'btn btn-primary btn-block'
